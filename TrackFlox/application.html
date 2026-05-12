@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Formulario de aplicación de TrackFlow para perfiles de logística y operaciones." />
+	<title>TrackFlow | Formulario de Registro</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Nunito:wght@600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&icon_names=visibility,visibility_off" />
+	<link rel="stylesheet" href="./style.css" />
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: {
+						sans: ["Manrope", "sans-serif"],
+						display: ["Space Grotesk", "sans-serif"]
+					},
+					colors: {
+						moss: {
+							50: "#f6f7f4",
+							100: "#edf2ec",
+							300: "#cad7ca",
+							500: "#0f5132",
+							700: "#0b3d26"
+						},
+						steel: {
+							500: "#334155"
+						},
+						amberx: {
+							400: "#f59e0b"
+						}
+					}
+				}
+			}
+		};
+	</script>
+	<script src="./validation.js" defer></script>
+</head>
+<body class="logistics-theme bg-moss-50 pb-20 text-slate-900 antialiased md:pb-0">
+	<div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+		<div class="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-amberx-400/25 blur-3xl"></div>
+		<div class="absolute right-0 top-20 h-80 w-80 rounded-full bg-moss-500/20 blur-3xl"></div>
+	</div>
+
+	<header id="inicio" class="sticky top-0 z-30 border-b border-moss-900/40 bg-green-900/95 backdrop-blur-md">
+		<div class="mx-auto flex w-[92%] max-w-6xl items-center justify-between gap-4 py-4">
+			<a href="./index.html#inicio" class="font-display text-2xl font-bold text-moss-50">TrackFlow</a>
+
+			<nav aria-label="Navegación principal" class="hidden md:block">
+				<ul class="flex items-center gap-2 text-sm font-semibold text-moss-100">
+					<li><a href="./index.html#beneficios" class="rounded-lg px-3 py-2 transition hover:bg-moss-50/15 hover:text-white">Beneficios</a></li>
+					<li><a href="./index.html#contacto" class="rounded-lg px-3 py-2 transition hover:bg-moss-50/15 hover:text-white">Contacto</a></li>
+				</ul>
+			</nav>
+
+			<a href="./application.html" class="inline-flex items-center justify-center rounded-full border border-moss-50/40 px-4 py-2 text-sm font-bold text-moss-50 transition hover:bg-moss-50/15">
+				Registro
+			</a>
+		</div>
+
+		<nav aria-label="Navegación móvil" class="mobile-bottom-nav border-t border-moss-700/10 md:hidden">
+			<ul class="mx-auto flex w-[92%] max-w-6xl items-center justify-between py-2 text-sm font-semibold text-steel-500">
+				<li><a href="./index.html#beneficios" class="rounded-lg px-3 py-2 transition hover:bg-moss-500/10 hover:text-moss-700">Beneficios</a></li>
+				<li><a href="./index.html#contacto" class="rounded-lg px-3 py-2 transition hover:bg-moss-500/10 hover:text-moss-700">Contacto</a></li>
+				<li><a href="./application.html" class="rounded-lg px-3 py-2 transition hover:bg-moss-500/10 hover:text-moss-700">Registro</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="px-4 py-10 sm:px-6">
+		<section class="lime-fade-container mx-auto w-full max-w-3xl rounded-2xl border border-moss-300 p-6 shadow-xl backdrop-blur-sm sm:p-8">
+			<header class="mb-6 border-b border-moss-300/80 pb-5">
+				<p class="inline-block rounded-full bg-amberx-400/25 px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-amber-900">
+					TrackFlow - Registro
+				</p>
+				<h1 class="font-display mt-3 text-3xl font-bold text-moss-700 sm:text-4xl">Formulario de Registro</h1>
+			</header>
+
+			<form id="application-form" novalidate class="space-y-8">
+				<fieldset class="space-y-4">
+					<legend class="font-display text-xl font-semibold text-moss-700">1. Datos personales</legend>
+
+					<div>
+						<label for="fullName" class="mb-1 block text-sm font-semibold text-moss-700">Nombre completo</label>
+						<input id="fullName" name="fullName" type="text" autocomplete="name" class="w-full rounded-xl border border-moss-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-moss-500 focus:ring-2 focus:ring-moss-500/25" placeholder="Ej: Martina López" />
+						<p class="field-error mt-1 text-sm text-red-700" data-error-for="fullName"></p>
+					</div>
+
+					<div>
+						<label for="email" class="mb-1 block text-sm font-semibold text-moss-700">Email</label>
+						<input id="email" name="email" type="email" autocomplete="email" class="w-full rounded-xl border border-moss-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-moss-500 focus:ring-2 focus:ring-moss-500/25" placeholder="nombre@correo.com" />
+						<p class="field-error mt-1 text-sm text-red-700" data-error-for="email"></p>
+					</div>
+
+					<div>
+						<label for="password" class="mb-1 block text-sm font-semibold text-moss-700">Contraseña</label>
+						<div class="relative">
+							<input id="password" name="password" type="password" autocomplete="new-password" class="w-full rounded-xl border border-moss-300 bg-white px-4 py-3 pr-28 text-sm text-slate-900 outline-none transition focus:border-moss-500 focus:ring-2 focus:ring-moss-500/25" placeholder="Mínimo 8 caracteres" />
+							<button
+								type="button"
+								id="toggle-password"
+								aria-controls="password"
+								aria-label="Mostrar contraseña"
+								onclick="togglePasswordVisibility()"
+								class="absolute right-2 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-moss-700 transition hover:bg-moss-500/10"
+							>
+								<span id="toggle-password-icon" class="material-symbols-outlined text-[20px] leading-none" aria-hidden="true">visibility</span>
+							</button>
+						</div>
+						<p class="mt-1 text-xs text-steel-500">Debe incluir mayúscula, minúscula y número.</p>
+						<p class="field-error mt-1 text-sm text-red-700" data-error-for="password"></p>
+					</div>
+				</fieldset>
+
+				<fieldset class="space-y-3">
+					<legend class="font-display text-xl font-semibold text-moss-700">3. Envío de Registro</legend>
+					<label class="flex items-start gap-3 rounded-xl border border-moss-300 bg-moss-50 p-4">
+						<input id="accept" name="accept" type="checkbox" class="mt-1 h-4 w-4 rounded border-moss-300 text-moss-700 focus:ring-moss-500" />
+						<span class="text-sm text-steel-500">
+							Confirmo que los datos cargados son correctos y autorizo su uso para revisión interna.
+						</span>
+					</label>
+					<p class="field-error mt-1 text-sm text-red-700" data-error-for="accept"></p>
+
+					<div class="flex flex-wrap items-center gap-3 pt-2">
+						<button type="submit" class="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-moss-500 to-moss-700 px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5">
+							Enviar aplicación
+						</button>
+						<button type="reset" class="inline-flex items-center justify-center rounded-full border border-moss-700/30 px-6 py-3 text-sm font-bold text-moss-700 transition hover:bg-moss-500/10">
+							Limpiar Datos
+						</button>
+					</div>
+
+					<div id="form-status" class="hidden rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm text-emerald-800"></div>
+				</fieldset>
+			</form>
+		</section>
+	</main>
+</body>
+</html>
