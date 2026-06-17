@@ -1,22 +1,46 @@
-import { Product } from "../types/models";
+import { User, Admin, interestedworker, Employee, Customer, Transportist, Warehouse, Contractor, Product } from "../types/models";
+import { Dimensions } from "../types/models";
+import { Shipment, Destination, Country, ShipmentPriority, ShipmentStatus  } from "../types/models";
+import { Carrier } from "../types/models";
+import { WarehouseLocation, ProductStatus } from "../types/models";
+import { ProductCategory } from "../types/models";
 
-function OrdenarProductosPorPrecio(productList: Product[]): Product[] {
-    return productList.sort((a, b) => a.price - b.price);
+
+//verifica si el producto esta en donde el warehouse
+function filterProductsByWarehouse(products: Product[], warehouse: WarehouseLocation): Product[]{
+    return products.filter(product => product.warehouse === warehouse);
 }
-function OrdenarProductosPorNombre(productList: Product[]): Product[] {
-    return productList.sort((a, b) => a.name.localeCompare(b.name));
+
+// verifica si el producto es igual que la categoria
+function filterProductsByCategory(products: Product[], category: ProductCategory): Product[] {
+    return products.filter(product => product.category === category);
 }
-function OrdenarProductosPorFechaExpiracion(productList: Product[]): Product[] {
-    return productList.sort((a, b) => a.expirationDate.getTime() - b.expirationDate.getTime());
+
+//filtra por si el producto tiene poco stock
+function filterLowStockProducts(products: Product[]): Product[] {
+    return products.filter(product => product.stockQuantity <= product.minStockThreshold);
 }
-function AgregarInventarioAlTransportista(transportist: any, newInventory: string): any {
-    if (!transportist.Inventory) {
-        transportist.Inventory = [];
-    }
-    transportist.Inventory.push(newInventory);
-    return transportist;
+
+//Retorna productos ordenados por cantidad de stock no muta el original
+function sortProductsByStock(products: Product[], order: "asc" | "desc"): Product[] {
+    return products.slice().sort((a, b) => {
+        if (order === "asc") {
+            return a.stockQuantity - b.stockQuantity;
+        } else {
+            return b.stockQuantity - a.stockQuantity;
+        }
+    });
 }
-function AgregarEmployee(employeeList: any[], newEmployee: any): any[] {
-    employeeList.push(newEmployee);
-    return employeeList;
+
+//Retorna transportistas ordenados por tasa de entrega a tiempo no muta el original
+function sortCarriersByReliability(carriers: Carrier[], order: "asc" | "desc"): Carrier[] {
+    return carriers.slice().sort((a, b) => {
+        if (order === "asc") {
+            return a.onTimeRate - b.onTimeRate;
+        } else {
+            return b.onTimeRate - a.onTimeRate;
+        }
+    });
 }
+
+
